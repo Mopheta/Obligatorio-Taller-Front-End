@@ -59,7 +59,7 @@ export default class Login extends Component {
                             <div id="login-column" className="col-md-6">
                                 <div id="login-box" className="col-md-12">
                                     <form id="login-form" className="form" action="" method="post">
-                                        <h1 className="text-center text-info">Natural Products 1891</h1>
+                                        <h1 className="text-center text-info">Natural Products since 1891</h1>
                                         <div className="form-group">
                                             <label htmlFor="email" className="text-info">Username*:</label><br/>
                                             <input type="text" name="email" id="email" className="form-control w-100" placeholder="enter your email.."
@@ -74,13 +74,12 @@ export default class Login extends Component {
                                         </div>
                                         <div className="form-group">
                                             {
-                                                this.state.email !== "" && this.state.password !== "" ? 
-                                                    <input type="button" name="submit" className="btn btn-info btn-md" value="Sign in" onClick= { this.loginUser }/>
+                                                 email !== "" && password !== "" ? 
+                                                <input type="button" name="submit" className="btn btn-info btn-md" value="Sign in" onClick= { this.loginUser }/>
                                                 : 
-                                                    <input type="button" name="submit" className="btn btn-info btn-md" value="Sign in" disabled/>
+                                                <input type="button" name="submit" className="btn btn-info btn-md" value="Sign in" disabled/>
                                             }               
-
-                                            <p className="text-info">Register here</p>                                       
+                                            <p className="text-info float-right">Register here</p>                                       
                                         </div>
                                     </form>
                                 </div>

@@ -1,3 +1,22 @@
-.form-control{
-    width: 150px;
+.inputSearch{
+    width: 300px;
+    border: solid 3px #17a2b8;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 20px 20px;
+}
+
+// .searchDiv{
+//     float: right;
+// }
+
+.productContainer{
+    margin: 30px 20px;
+    border: solid 3px #17a2b8;
+    border-radius: 6px;
+}
+
+.container {
+    // width: 90%;
+    max-width: 100% !important; 
 }

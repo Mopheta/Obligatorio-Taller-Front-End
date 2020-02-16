@@ -11,9 +11,9 @@ function App() {
     <div className="App">
       <header className="App-header">
       </header>
-      {/* <Login /> */}
+      <Login />
       <RegisterNewUser/>
-      {/* <Products/> */}
+      <Products/>
     </div>
   );
 }
