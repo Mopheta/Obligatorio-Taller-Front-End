@@ -17,7 +17,7 @@ export default class RegisterNewUser extends Component {
         })
     }
 
-    registerUser = () => {
+    signUp = () => {
         const { email, password } = this.state;
 
         console.log(email,password)
@@ -64,7 +64,7 @@ export default class RegisterNewUser extends Component {
                                         <div className="form-group">
                                             {
                                                 this.state.email !== "" && this.state.password !== "" ? 
-                                                    <input type="button" name="submit" className="btn btn-info btn-md" value="Sign in" onClick= { this.registerUser }/>
+                                                    <input type="button" name="submit" className="btn btn-info btn-md" value="Sign in" onClick= { this.signUp }/>
                                                 :   <input type="button" name="submit" className="btn btn-success btn-md" value="Sign up!" disabled/>
                                             }                                                                                
                                         </div>

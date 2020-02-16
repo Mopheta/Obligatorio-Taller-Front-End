@@ -13,9 +13,8 @@ export default class Product extends Component {
                 <td> { product.name } </td>
                 <td> { product.description } </td>
                 <td> ${ product.price } </td>
-                <input type="button" value="add to cart"/>
+                <td><input type="button" value="add to cart"/></td>
             </tr>
-
         )
     }
 }

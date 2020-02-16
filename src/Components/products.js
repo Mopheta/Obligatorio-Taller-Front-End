@@ -18,8 +18,6 @@ export default class Products extends Component {
 
     componentDidMount(){
 
-        const { products } = this.state;    
-
         fetch('https://tiendaonline2020.herokuapp.com/api/product/all')
         .then(response => {
             return response.json()
@@ -27,7 +25,6 @@ export default class Products extends Component {
         .then((allProd) => {
             this.setState({ products: allProd })
         })
-        console.log(products)
     }
 
     //Test pre-carga
@@ -39,10 +36,7 @@ export default class Products extends Component {
     onChangeSearch = (event) => {
         const { value } = event.target;
         this.setState( {search: value} )
-
     }
-
-
 
     render(){
         const { products, search } = this.state;
@@ -52,7 +46,7 @@ export default class Products extends Component {
             <div>
                 <div className="input-group mb-3">
                     <input type="text" className="form-control" placeholder="search by prodcut name"  aria-describedby="basic-addon1"
-                        value= { search }  onChange = { this.onChangeSearch }
+                        value= { search } onChange = { this.onChangeSearch }
                     />
                     <div className="input-group-prepend">
                         <span className="input-group-text" id="basic-addon1">Lupa</span>

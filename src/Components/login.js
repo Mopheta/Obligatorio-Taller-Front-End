@@ -18,7 +18,6 @@ export default class Login extends Component {
     }
 
     loginUser = () => {
-
         const { email, password } = this.state;
         console.log(email,password)
         fetch('http://tiendaonline2020.herokuapp.com/api/user/login',
