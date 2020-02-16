@@ -63,12 +63,12 @@ export default class Login extends Component {
                                         <h1 className="text-center text-info">Natural Products 1891</h1>
                                         <div className="form-group">
                                             <label htmlFor="email" className="text-info">Username*:</label><br/>
-                                            <input type="text" name="email" id="email" className="form-control" placeholder="enter your email.."
+                                            <input type="text" name="email" id="email" className="form-control w-100" placeholder="enter your email.."
                                                 value={ email } onChange={ this.onChangeFields } required
                                             />
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="password" className="text-info">Password*:</label><br/>
+                                            <label htmlFor="password" className="text-info w-100">Password*:</label><br/>
                                             <input type="password" name="password" id="password" className="form-control" placeholder="enter your password.."
                                                 value={ password } onChange={ this.onChangeFields } required
                                             />

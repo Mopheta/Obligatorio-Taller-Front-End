@@ -51,13 +51,13 @@ export default class RegisterNewUser extends Component {
                                         <h1 className="text-center text-info">Be part of our store</h1>
                                         <div className="form-group">
                                             <label htmlFor="email" className="text-info">Username*:</label><br/>
-                                            <input type="text" name="email" id="email" className="form-control" placeholder="enter your email.."
+                                            <input type="text" name="email" id="email" className="form-control w-100" placeholder="enter your email.."
                                                 value={ email } onChange={ this.onChangeFields } required
                                             />
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="password" className="text-info">Password*:</label><br/>
-                                            <input type="password" name="password" id="password" className="form-control" placeholder="enter your password.."
+                                            <input type="password" name="password" id="password" className="form-control w-100" placeholder="enter your password.."
                                                 value={ password } onChange={ this.onChangeFields } required
                                             />
                                         </div>
