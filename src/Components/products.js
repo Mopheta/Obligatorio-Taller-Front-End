@@ -59,6 +59,7 @@ export default class Products extends Component {
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Price</th> 
+                                <th scope="col">Units</th> 
                                 <th scope="col"></th>                       
                             </tr>
                         </thead>

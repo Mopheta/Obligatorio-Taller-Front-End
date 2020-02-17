@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import '../myStyles/loginStyle.scss'
 
 export default class Login extends Component {
     constructor(props){
@@ -59,7 +59,7 @@ export default class Login extends Component {
                             <div id="login-column" className="col-md-6">
                                 <div id="login-box" className="col-md-12">
                                     <form id="login-form" className="form" action="" method="post">
-                                        <h1 className="text-center text-info">Natural Products since 1891</h1>
+                                        <h1 className="text-center text-info loginRegisterTitle">Natural Products - since 1891</h1>
                                         <div className="form-group">
                                             <label htmlFor="email" className="text-info">Username*:</label><br/>
                                             <input type="text" name="email" id="email" className="form-control w-100" placeholder="enter your email.."
