@@ -16,7 +16,7 @@ export default class Product extends Component {
                     <p className="card-text descriptionProduct">{product.description}</p>
                     <p className="card-text"> ${product.price}</p>
                     <input type="number" className="quantityInput" title="Quantity"/>
-                    <a href="#" className="btn btn-info float-right">Add to cart</a>
+                    <a href="google.com" className="btn btn-info float-right">Add to cart</a>
                 </div>
             </div>
         )
