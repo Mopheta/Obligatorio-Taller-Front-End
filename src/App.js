@@ -14,6 +14,7 @@ function App() {
       <Login />
       <RegisterNewUser/>
       <Products/>
+     
     </div>
   );
 }

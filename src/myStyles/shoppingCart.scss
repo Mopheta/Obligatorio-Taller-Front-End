@@ -1,0 +1,60 @@
+/* Totals section */
+
+.totals .totals-item {
+    float: right;
+    margin: 4px;
+    margin-top: 5px;
+  //  clear: both;
+   // width: 100%;
+  //  margin-bottom: 10px;
+  }
+  .totals .totals-item label {
+    //float: left;
+  //  clear: both;
+   // width: 50%;
+   // text-align: left;
+   
+  }
+  .totals .totals-item .totals-value {
+   float: right;
+   // width: 50%;
+    //text-align: right;
+  }
+  .totals .totals-item-total {
+  font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+  }
+   
+  .checkout {
+    float: right;
+    
+    background-color: #f0c14b;
+    margin-top: 15px;
+    font-size: 20px;
+    border-radius: 3px;
+    padding: 4px;
+    border-color: #a88734
+
+  }
+
+  .checkout:hover {
+    background-color: #fdde8f;
+    color: #FFF;
+  }
+
+.totals{
+   float: left;
+   width: auto;
+   height:auto;
+   padding:5px;
+}
+.clearfix{
+    clear: both;
+}
+
+.shoppingCartMargin{
+    border: solid 3px #17a2b8;
+    border-radius: 6px;
+    margin-top: 30px;
+    height: fit-content;
+    padding: 20px;
+}
