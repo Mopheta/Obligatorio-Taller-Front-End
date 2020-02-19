@@ -1,26 +1,49 @@
-.inputSearch{
-    width: 300px;
-    border: solid 3px #17a2b8;
-    border-radius: 6px;
-    padding: 15px;
-    margin: 20px 20px;
+.inputSearch {
+  width: 300px;
+  border: solid 3px #17a2b8;
+  border-radius: 6px;
+  padding: 15px;
+  margin: 20px 20px;
 }
 
 // .searchDiv{
 //     float: right;
 // }
 
-.productContainer{
-    margin: 30px 20px;
-    border: solid 3px #17a2b8;
-    border-radius: 6px;
+.productContainer {
+  margin: 30px 20px;
+  border: solid 3px #17a2b8;
+  border-radius: 6px;
 }
 
 .container {
-    // width: 90%;
-    max-width: 100% !important; 
+  // width: 90%;
+  max-width: 100% !important;
 }
 
-.quantityInput{
-    width: 45px;
+.quantityInput {
+  width: 45px;
+  height: 38px;
+}
+
+.card {
+  width: 18rem;
+  display: inline-table;
+  margin-top: 10px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.card-text.descriptionProduct{
+  height:100px!important;
+}
+
+.card-body {
+  height: 300px;
 }

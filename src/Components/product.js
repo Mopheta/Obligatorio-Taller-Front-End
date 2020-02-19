@@ -3,19 +3,22 @@ import '../myStyles/product.scss'
 
 export default class Product extends Component {
 
-    render(){
+    render() {
 
         const { product } = this.props
 
-        return(
-            <tr>
-                {/* <td> { product._id } </td> */}
-                <td> { product.name } </td>
-                <td> { product.description } </td>
-                <td> ${ product.price } </td>
-                <td><input type="number" className="quantityInput" /></td>
-                <td><input type="button" className="btn btn-info btn-md" value="add to cart"/></td>
-            </tr>
+        return (
+
+            <div className="card" >
+                <img className="card-img-top" src={product.photo} alt="Product representation" />
+                <div className="card-body">
+                    <h5 className="card-title">{product.name}</h5>
+                    <p className="card-text descriptionProduct">{product.description}</p>
+                    <p className="card-text"> ${product.price}</p>
+                    <input type="number" className="quantityInput" title="Quantity"/>
+                    <a href="#" className="btn btn-info float-right">Add to cart</a>
+                </div>
+            </div>
         )
     }
 }
