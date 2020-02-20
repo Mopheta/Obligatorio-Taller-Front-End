@@ -19,7 +19,7 @@ export default class Products extends Component {
             search: ''
         }
     }
-
+    
     componentDidMount() {
         getProducts()
             .then(res => res.json())
