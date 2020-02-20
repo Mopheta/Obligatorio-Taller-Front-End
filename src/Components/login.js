@@ -70,7 +70,7 @@ class Login  extends Component {
                                             <p className="text-center text-info loginRegisterTitle-info" > since 1891 </p>
                                             <div className="form-group">
                                                 <label htmlFor="email" className="text-info">Username*:</label><br />
-                                                <input type="text" name="email" id="email" className="form-control w-100" placeholder="enter your email.."
+                                                <input type="email" name="email" id="email" className="form-control w-100" placeholder="enter your email.."
                                                     value={email} onChange={this.onChangeFields} required
                                                 />
                                             </div>

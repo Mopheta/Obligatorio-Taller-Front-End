@@ -51,12 +51,12 @@ export default class Products extends Component {
                 </div>
                 <div className="row">
                     <div className="col-lg-10">
-                    <div className="productContainer mx-auto">
+                    <div className="productContainer row mx-auto">
                         {
                             searchByName.map((prod, id) => <Product product={prod} key={id} />)
                         }
                     </div>
-                </div>
+                </div> 
                     <div className="col-lg-2 shoppingCartMargin">
                         <ShoppingCart />
                     </div>

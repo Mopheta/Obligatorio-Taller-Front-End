@@ -3,7 +3,7 @@
   border: solid 3px #17a2b8;
   border-radius: 6px;
   padding: 15px;
- margin-top: 15px;
+  margin-top: 15px;
 }
 
 .productContainer {
@@ -24,7 +24,7 @@
 
 .card {
   width: 18rem;
-  display: inline-table !important;
+  // display: inline-table !important;
   margin-top: 10px;
   margin-right: 0;
   margin-left: 20px;
@@ -32,14 +32,21 @@
 
 .card-img-top {
   width: 100%;
-  height: 15vw;
+  height: 100%;
   object-fit: cover;
 }
 
 .card-text.descriptionProduct{
   height:100px!important;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-body {
   height: 300px;
+}
+
+.cardImgContainer{
+  height: 15vw !important;
+
 }

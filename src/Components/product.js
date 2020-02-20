@@ -9,8 +9,10 @@ export default class Product extends Component {
 
         return (
 
-            <div className="card" >
-                <img className="card-img-top" src={product.photo} alt="Product representation" />
+            <div className="card col-lg-3 col-md-4 col-6">
+                <div className="cardImgContainer">
+                    <img className="card-img-top" src={product.photo} alt="Product representation" />
+                </div>
                 <div className="card-body">
                     <h5 className="card-title">{product.name}</h5>
                     <p className="card-text descriptionProduct">{product.description}</p>
