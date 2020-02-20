@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
-import { loginUser } from '../Services/services';
 import { withRouter } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+
+//Components
+import { loginUser } from '../Services/services';
 
 //Styles
 import '../myStyles/loginStyle.scss'
+import 'react-toastify/dist/ReactToastify.css';
 
- class Login  extends Component {
+class Login  extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,16 +26,31 @@ import '../myStyles/loginStyle.scss'
 
     loginUser = (event) => {
         event.preventDefault();
+
         const { history } = this.props;
         const { email, password } = this.state;
+
         loginUser(email, password)
             .then(res => res.json())
             .then(res => {
-                console.log("Error: ", res);
-                history.push("/products")
+                res.status !== 401 ? history.push("/products")
+                : toast.error("Invalid email or password", {
+                    position: toast.POSITION.TOP_RIGHT
+                  });              
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                toast.error("Invalid email or password", {
+                    position: toast.POSITION.TOP_RIGHT
+                  });
+            });
     }
+
+    registerNewUser = () => {
+
+        const { history } = this.props;
+        history.push("/register")
+    }
+
 
     render() {
         
@@ -47,7 +66,8 @@ import '../myStyles/loginStyle.scss'
                                 <div id="login-column" className="col-md-6">
                                     <div id="login-box" className="col-md-12">
                                         <form id="login-form" className="form" action="" method="post">
-                                            <h1 className="text-center text-info loginRegisterTitle">Natural Products - since 1891</h1>
+                                            <h1 className="text-center text-info loginRegisterTitle">Natural Products</h1>
+                                            <p className="text-center text-info loginRegisterTitle-info" > since 1891 </p>
                                             <div className="form-group">
                                                 <label htmlFor="email" className="text-info">Username*:</label><br />
                                                 <input type="text" name="email" id="email" className="form-control w-100" placeholder="enter your email.."
@@ -65,9 +85,10 @@ import '../myStyles/loginStyle.scss'
                                                     email !== "" && password !== "" ?
                                                         <input type="submit" name="submit" className="btn btn-info btn-md" value="Sign in" />
                                                         :
-                                                        <input type="button" name="submit" className="btn btn-info btn-md" value="Sign in" disabled />
+                                                        <input type="submit" name="submit" className="btn btn-info btn-md" value="Sign in" disabled />
                                                 }
-                                                <p className="text-info float-right">Register here</p>
+                                                <input type="button" className="btn btn-outline-info float-right" onClick= { this.registerNewUser } value="Sign up!"/>
+                                                <ToastContainer />
                                             </div>
                                         </form>
                                     </div>

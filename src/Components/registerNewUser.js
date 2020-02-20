@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
-import '../myStyles/loginStyle.scss'
+import { withRouter } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+
+//Components
 import { signUp } from '../Services/services';
 
-export default class RegisterNewUser extends Component {
+//Styles
+import '../myStyles/register.scss'
+import 'react-toastify/dist/ReactToastify.css';
+
+class RegisterNewUser extends Component {
     constructor(props) {
         super(props);
 
@@ -19,16 +26,29 @@ export default class RegisterNewUser extends Component {
     }
 
     signUp = (event) => {
+
         event.preventDefault();
+
         const { email, password } = this.state;
+        const { history } = this.props;
+
         signUp(email, password)
             .then(res => res.json())
-            .then(res => console.log(res))
+            .then(res => {
+                res.status !== 400 ? history.push("/login")
+                : toast.error("Email already used", {
+                    position: toast.POSITION.TOP_RIGHT
+                  });              
+            })
             .catch(reason => console.log(reason));
-
-        //     .catch(error => console.error('Error:', error))
-        //     .then(res => console.log('Success:', res));
     }
+
+    goBack = () => {
+
+        const { history } = this.props;
+        history.push("/login");
+    }
+
 
     render() {
         const { email, password } = this.state;
@@ -59,9 +79,12 @@ export default class RegisterNewUser extends Component {
                                             <div className="form-group">
                                                 {
                                                     this.state.email !== "" && this.state.password !== "" ?
-                                                        <input type="button" name="submit" className="btn btn-info btn-md" value="Sign up"/>
-                                                        : <input type="button" name="submit" className="btn btn-success btn-md" value="Sign up!" disabled />
+                                                        <input type="submit" name="submit" className="btn btn-success btn-md" value="Sign up!"/>
+                                                    : <input type="submit" name="submit" className="btn btn-success btn-md" value="Sign up!" disabled />
                                                 }
+
+                                                <input type="button" className="btn btn-outline-secondary float-right" onClick={ this.goBack } value="Go back"/>
+                                                <ToastContainer />
                                             </div>
                                         </form>
                                     </div>
@@ -73,5 +96,6 @@ export default class RegisterNewUser extends Component {
             </div>
         )
     }
-
 }
+
+export default withRouter(RegisterNewUser);

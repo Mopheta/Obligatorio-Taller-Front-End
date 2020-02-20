@@ -40,8 +40,8 @@ export default class Products extends Component {
 
             <div className="container">
                 <div className="row">
-                    <div className="col pr-0">
-                        <input type="text" className="inputSearch float-right mr-0 my-0" placeholder="search by product name..." aria-describedby="basic-addon1"
+                    <div className="col-lg-10">
+                        <input type="text" className="inputSearch float-right  my-30" placeholder="search by product name..." aria-describedby="basic-addon1"
                             value={search} onChange={this.onChangeSearch}
                         />
                         <div className="input-group-prepend">
@@ -57,9 +57,9 @@ export default class Products extends Component {
                         }
                     </div>
                 </div>
-                <div className="col-lg-2 shoppingCartMargin">
-                <ShoppingCart />
-                </div>
+                    <div className="col-lg-2 shoppingCartMargin">
+                        <ShoppingCart />
+                    </div>
                 </div>
                <div>
                

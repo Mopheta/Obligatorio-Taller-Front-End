@@ -21,10 +21,6 @@ function App() {
         <Route path="/products" component={ Products }  exact/>
         <Route component={ PageNotFound }/>
       </Switch>
-      {/* <Login />
-      <RegisterNewUser/>
-      <Products/> */}
-     
     </div>
   );
 }
