@@ -1,25 +1,25 @@
-const signUp = async (userName, password) => {
+const signUp = async (email, password) => {
     return await fetch('http://tiendaonline2020.herokuapp.com/api/user/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            email: userName,
-            password: password
+            email,
+            password
         })
     });
 }
 
-const loginUser = async (userName, password) => {
+const loginUser = async (email, password) => {
     return await fetch('http://tiendaonline2020.herokuapp.com/api/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            email: userName,
-            password: password
+            email,
+            password
         })
     });
 }

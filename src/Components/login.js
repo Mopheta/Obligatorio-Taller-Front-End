@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
-import '../myStyles/loginStyle.scss'
 import { loginUser } from '../Services/services';
+import { withRouter } from 'react-router-dom'
 
-export default class Login extends Component {
+//Styles
+import '../myStyles/loginStyle.scss'
+
+ class Login  extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             email: '',
             password: ''
         }
     }
-
+    
     onChangeFields = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -20,16 +22,19 @@ export default class Login extends Component {
 
     loginUser = (event) => {
         event.preventDefault();
+        const { history } = this.props;
         const { email, password } = this.state;
         loginUser(email, password)
             .then(res => res.json())
-            .then(res => console.log(res))
-            .catch(reason => console.log(reason));
-            console.log(email,password);
+            .then(res => {
+                console.log("Error: ", res);
+                history.push("/products")
+            })
+            .catch(err => console.log(err));
     }
 
     render() {
-
+        
         const { email, password } = this.state;
 
         return (
@@ -75,3 +80,5 @@ export default class Login extends Component {
         )
     }
 }
+
+export default withRouter(Login);
