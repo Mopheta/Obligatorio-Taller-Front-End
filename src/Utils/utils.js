@@ -1,49 +1,54 @@
 const searchByName = (search) => {
-    return products.filter(prod => prod.name.toLowerCase().indexOf(search.toLowerCase()) !== -1)
+    //return products.filter(prod => prod.name.toLowerCase().indexOf(search.toLowerCase()) !== -1)
 }
-
-// const cart = {
-//     items:[{
-//         product: product,
-//         quantity: 0,          
-//     }],  
-//     quantityOfProducts: 0,
-//     totalAmount: 0,
-//     subtotal: 0,
-//     iva: 0
-// }
 
 const totalCalculation = (cart, item) => {
     const { price } = item;
-    const totalIva = (price * 1.22) - price;
 
-    //Aplico el iva al precio, se lo resto
-    const finalTotal = price + totalIva;
+    let precioFinalRenglon = price * (item.quantity || 1)
+    let precioNetoRenglon = precioFinalRenglon - (precioFinalRenglon * 0.22);
+
+    let precioFinal = +cart.totalAmount + precioFinalRenglon;
+    let precioNetoFinal = +cart.subTotal + precioNetoRenglon;
+    let ivaFinal = +cart.iva + (precioFinalRenglon - precioNetoRenglon);
+
+    // const totalWithoutIva = price * (item.quantity || 1);
+    // const totalIva = (totalWithoutIva - (totalWithoutIva * 0.22));
 
     //precio con el iva calculado
-    cart.totalAmount += finalTotal;
-    cart.subtotal += price;
-    cart.iva += totalIva;
+    cart.totalAmount = parseFloat(precioFinal).toFixed(2);
+    cart.subTotal = parseFloat(precioNetoFinal).toFixed(2);
+    cart.iva = parseFloat(ivaFinal).toFixed(2);
 }
 
 const addToCart = (cart, item) => {
+    //Clonar el carrito
+    const newItem = {
+        _id: item._id,
+        name: item.name,
+        description: item.description,
+        price: item.price,
+        photo: item.photo,
+        quantity: item.quantity,
+    };
 
-    let product = cart.find(e => e.product._id === item._id);
+    const product = cart.items.find(e => e.product._id === newItem._id);
 
     if (!product) {
-        cart.push({
-            product: item,
-            quantity: 1
-        })
+        //pushear al carrito nuevo
+        cart.items.push({
+            product: newItem,
+        });
     } else {
-        cart.filter((e) => {
-            if (e.product._id === item._id) {
-                e.quantity++;
+        //Si no, le agrego en el nuevo carrito
+        cart.items.filter((e) => {
+            if (e.product._id === newItem._id) {
+                e.quantity += newItem.quantity;
             }
-        })
+        });
     }
-    totalCalculation(cart, item);
-    cart.quantityOfProducts++;
+    totalCalculation(cart, newItem);
+    return cart; //retornamos el carrito clonado
 }
 
 const countCartItems = (cart) => {
@@ -61,4 +66,4 @@ const countCartTotalAmount = (cart) => {
     return totalSpend;
 }
 
-export {searchByName, totalCalculation, addToCart, countCartItems, countCartTotalAmount};
+export { searchByName, totalCalculation, addToCart, countCartItems, countCartTotalAmount };

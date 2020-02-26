@@ -9,17 +9,31 @@ import '../myStyles/product.scss'
 
 //functions
 import { getProducts } from '../Services/services'
+import { addToCart as addToCartUtils } from '../Utils/utils'
 
 export default class Products extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             products: [],
-            search: ''
+            search: '',
+            cart: {
+                items: [],
+                totalItems: 0,
+                subTotal: 0,
+                iva: 0,
+                totalAmount: 0
+            }
         }
     }
-    
+
+    addToCart = (item, quantity) => {
+        const { cart } = this.state;
+        item.quantity = quantity;
+        const newCart = addToCartUtils(cart, item);
+        this.setState({ cart: newCart });
+    }
+
     componentDidMount() {
         getProducts()
             .then(res => res.json())
@@ -30,6 +44,21 @@ export default class Products extends Component {
     onChangeSearch = (event) => {
         const { value } = event.target;
         this.setState({ search: value })
+    }
+
+    remove = (_id) => {
+        const { items, totalItems, subTotal, iva, totalAmount } = this.state.cart;
+        debugger;
+        const nuevosItems = items.filter(element => element.product._id !== _id)
+        this.setState({
+            cart: {
+                items: [...nuevosItems],
+            },
+            totalItems,
+            subTotal,
+            iva,
+            totalAmount
+        });
     }
 
     render() {
@@ -51,19 +80,16 @@ export default class Products extends Component {
                 </div>
                 <div className="row">
                     <div className="col-lg-10">
-                    <div className="productContainer row mx-auto">
-                        {
-                            searchByName.map((prod, id) => <Product product={prod} key={id} />)
-                        }
+                        <div className="productContainer row mx-auto">
+                            {
+                                searchByName.map((prod, id) => <Product product={prod} key={id} addToCart={this.addToCart} />)
+                            }
+                        </div>
                     </div>
-                </div> 
                     <div className="col-lg-2 shoppingCartMargin">
-                        <ShoppingCart />
+                        <ShoppingCart cart={this.state.cart} remove={this.remove} />
                     </div>
                 </div>
-               <div>
-               
-               </div>
             </div>
         )
     }
