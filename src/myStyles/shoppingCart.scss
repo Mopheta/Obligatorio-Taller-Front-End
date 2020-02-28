@@ -4,22 +4,12 @@
     float: right;
     margin: 4px;
     margin-top: 5px;
-  //  clear: both;
-   // width: 100%;
-  //  margin-bottom: 10px;
   }
-  .totals .totals-item label {
-    //float: left;
-  //  clear: both;
-   // width: 50%;
-   // text-align: left;
-   
-  }
+
   .totals .totals-item .totals-value {
    float: right;
-   // width: 50%;
-    //text-align: right;
   }
+
   .totals .totals-item-total {
   font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
   }
@@ -57,4 +47,10 @@
     margin-top: 30px;
     height: fit-content;
     padding: 20px;
+}
+
+.cartImg{
+  width: 50px;
+  height: 50px;
+  margin-left: 15px;
 }

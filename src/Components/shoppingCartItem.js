@@ -1,30 +1,27 @@
 import React, { Component } from 'react'
-import '../myStyles/product.scss'
+import '../myStyles/shoppingCartItemStyle.scss'
 
 export default class ShoppingCartItem extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     removeItem = () => {
-        const { _id } = this.props.item;
-        this.props.removeCartItem(_id);
+        const { item } = this.props;
+        this.props.removeCartItem(item);    
     }
 
     render() {
-        const { name, quantity } = this.props.item;
+        const { name, price, quantity } = this.props.item;
         return (
-            <>
-                <p>
-                    Name  : {name} - {quantity}
+            <tr>
+                <td>{ name }</td>
+                <td>${ price }</td>
+                <td>{ quantity }</td>
+                <td>
                     <input type="button"
-                        className="btn btn-danger"
+                        className="btn btn-danger remove_btn"
                         value="Remove"
                         onClick={this.removeItem}
                     />
-                </p>
-        </>
+                </td>
+            </tr>
         )
     }
 }

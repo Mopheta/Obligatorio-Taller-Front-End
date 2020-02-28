@@ -1,19 +1,12 @@
-const searchByName = (search) => {
-    //return products.filter(prod => prod.name.toLowerCase().indexOf(search.toLowerCase()) !== -1)
-}
-
 const totalCalculation = (cart, item) => {
     const { price } = item;
 
-    let precioFinalRenglon = price * (item.quantity || 1)
-    let precioNetoRenglon = precioFinalRenglon - (precioFinalRenglon * 0.22);
+    let precioFinalRenglon = price * (item.quantity || 1) //cuanto vale el item
+    let precioNetoRenglon = (precioFinalRenglon / 1.22); //iva de ese item
 
     let precioFinal = +cart.totalAmount + precioFinalRenglon;
     let precioNetoFinal = +cart.subTotal + precioNetoRenglon;
     let ivaFinal = +cart.iva + (precioFinalRenglon - precioNetoRenglon);
-
-    // const totalWithoutIva = price * (item.quantity || 1);
-    // const totalIva = (totalWithoutIva - (totalWithoutIva * 0.22));
 
     //precio con el iva calculado
     cart.totalAmount = parseFloat(precioFinal).toFixed(2);
@@ -33,22 +26,45 @@ const addToCart = (cart, item) => {
     };
 
     const product = cart.items.find(e => e.product._id === newItem._id);
-
     if (!product) {
         //pushear al carrito nuevo
         cart.items.push({
             product: newItem,
         });
+        cart.totalItems += newItem.quantity;
     } else {
         //Si no, le agrego en el nuevo carrito
         cart.items.filter((e) => {
             if (e.product._id === newItem._id) {
-                e.quantity += newItem.quantity;
+                e.product.quantity += newItem.quantity;
+                cart.totalItems += newItem.quantity;
             }
         });
     }
     totalCalculation(cart, newItem);
-    return cart; //retornamos el carrito clonado
+    return cart;
+}
+
+const calcularMontos = (items) => {
+    let totalAmount = 0;
+    let iva = 0;
+    let subTotal = 0;
+    let totalItems = 0;
+
+    items.forEach(item => {
+        totalAmount += item.product.price;
+        iva += (item.product.price - (item.product.price / 1.22));
+        subTotal += (totalAmount - iva);
+        totalItems++; 
+    })
+
+    let montos = {
+        totalAmount: parseFloat(totalAmount).toFixed(2),
+        iva: parseFloat(iva).toFixed(2),
+        subTotal: parseFloat(subTotal).toFixed(2),
+        totalItems: totalItems
+    }
+    return montos;
 }
 
 const countCartItems = (cart) => {
@@ -66,4 +82,4 @@ const countCartTotalAmount = (cart) => {
     return totalSpend;
 }
 
-export { searchByName, totalCalculation, addToCart, countCartItems, countCartTotalAmount };
+export {  totalCalculation, addToCart, countCartItems, countCartTotalAmount, calcularMontos };

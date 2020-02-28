@@ -1,25 +1,9 @@
 import React from 'react'
+import '../myStyles/loginStyle.scss'
 
-const PageNotFound = () =>  <h2> Oops! page not found </h2>;
-
-/*
-useEffect importarlo como component
-Similar al didMount pero desde component funcional
-useEffect(({history, pochoclo}) => {
-
-
-
-
-}, [pochoclo]) 
-
-el []  sirve para tirar un componente
-que se va a ejecutar cuando caiga en ese componente
-
-
-
-*/ 
-
-
-
+const PageNotFound = () =>  <div>
+        <h2 className="pageNotFoundText"> Oops! page not found or not exist</h2>
+        <p className="trolleo">y nacional tampoco</p>
+</div>
 
 export default PageNotFound;

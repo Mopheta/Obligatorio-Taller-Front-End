@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-import ShoppingCartItem from './shoppingCartItem';
+// import ShoppingCartItem from './shoppingCartItem';
 //Styles
 import '../myStyles/shoppingCart.scss'
 
 export default class ShoppingCart extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     removeCartItem = (_id) => {
         this.props.remove(_id);
@@ -14,13 +11,19 @@ export default class ShoppingCart extends Component {
 
     render() {
         const { cart } = this.props;
-        const { subTotal, iva, totalAmount } = this.props.cart;
+        const { subTotal, iva, totalAmount, totalItems } = this.props.cart;
         return (
             <div className="row totals mt-2">
-                <h3 className="mx-auto mb-4">Cart</h3>
+                <div className="col-12 text-center">
+                    <h3 className="mx-auto mb-4">Cart<img className="cartImg" src={require('./cart.png')} alt="Cart"/></h3>
+                </div>
                 {
                     !!cart.items.length > 0 ?
                         <>
+                            <div className="totals-item col-12">
+                                <label>Items in your cart: </label>
+                                <div className="totals-value" id="cart-subtotal">{totalItems}</div>
+                            </div>
                             <div className="totals-item col-12">
                                 <label>Subtotal</label>
                                 <div className="totals-value" id="cart-subtotal">${subTotal}</div>
@@ -39,16 +42,11 @@ export default class ShoppingCart extends Component {
                             <div className="totals-item col-12">
                                 <button className="checkout">Checkout</button>
                             </div>
-                            <div>
-                                {
-                                    cart.items.map(element => {
-                                        return (<ShoppingCartItem item={element.product} removeCartItem={this.removeCartItem}/>)
-                                    })
-                                }
-                            </div>
                         </>
                         :
-                        <h5 className="mx-auto mb-4">Add a product to the cart!</h5>
+                        <div className="col-12 text-center">
+                            <h5 className="mx-auto mb-4">Add a product to the cart!</h5>
+                        </div>
                 }
             </div>
 
