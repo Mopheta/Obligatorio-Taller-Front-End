@@ -64,6 +64,18 @@ export default class Products extends Component {
         });
     }
 
+    removeAll = () => {
+        this.setState({
+            cart: {
+                items: [],
+                totalItems: 0,
+                subTotal: 0,
+                iva: 0,
+                totalAmount: 0
+            }
+        })
+    }
+
     render() {
         const { products, search, cart } = this.state;
         let searchByName = products.filter(prod => prod.name.toLowerCase().indexOf(search.toLowerCase()) !== -1)
@@ -71,10 +83,10 @@ export default class Products extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-9">
+                    <div className="col-lg-9">                    
                         <input type="text" className="inputSearch float-right  my-30" placeholder="search by product name..." aria-describedby="basic-addon1"
-                            value={search} onChange={this.onChangeSearch}
-                        />
+                            value={search} onChange={this.onChangeSearch}                           
+                        />                    
                     </div>
                 </div>
                 <div className="row">
@@ -86,14 +98,17 @@ export default class Products extends Component {
                         </div>
                     </div>
                     <div className="col-lg-3 shoppingCartMargin">
-                        <ShoppingCart cart={this.state.cart} remove={this.remove} />
+                        <ShoppingCart cart={this.state.cart}
+                         remove={this.remove}
+                         removeAll = {this.removeAll}   
+                        />
                         <div>
                             {
                                 cart.items.length > 0 &&
 
                         
-                            <table class="table">
-                                <thead class="thead-dark">
+                            <table className="table">
+                                <thead className="thead-dark">
                                     <tr>
                                     <th scope="col">Product name</th>
                                     <th scope="col">Price</th>
@@ -104,18 +119,18 @@ export default class Products extends Component {
                                 <tbody>
                                     {
                                         cart.items.map((item, index) =>
-                                            <ShoppingCartItem 
-                                                item={item.product} 
-                                                key={index} 
-                                                removeCartItem={this.removeCartItem} 
-                                                quantityItem={ products }
+                                        <ShoppingCartItem 
+                                            item={item.product} 
+                                            key={index} 
+                                            removeCartItem={this.removeCartItem} 
+                                            quantityItem={ products }
 
-                                            />)
+                                        />)
                                     } 
                                 </tbody>      
                             </table>  
                         }      
-                    </div>
+                        </div>
                     </div>
                     
                 </div>

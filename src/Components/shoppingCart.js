@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-// import ShoppingCartItem from './shoppingCartItem';
+
+//Components
+import CheckoutModal from './checkoutModal'
+
 //Styles
 import '../myStyles/shoppingCart.scss'
 
@@ -10,7 +13,7 @@ export default class ShoppingCart extends Component {
     }
 
     render() {
-        const { cart } = this.props;
+        const { cart,removeAll } = this.props;
         const { subTotal, iva, totalAmount, totalItems } = this.props.cart;
         return (
             <div className="row totals mt-2">
@@ -40,14 +43,15 @@ export default class ShoppingCart extends Component {
                             </div>
                             <div className="clearfix"></div>
                             <div className="totals-item col-12">
-                                <button className="checkout">Checkout</button>
+                                <CheckoutModal cart={cart} removeAll={removeAll}/>
                             </div>
                         </>
                         :
                         <div className="col-12 text-center">
                             <h5 className="mx-auto mb-4">Add a product to the cart!</h5>
-                        </div>
+                        </div>                    
                 }
+                
             </div>
 
         )
