@@ -1,15 +1,20 @@
-.modalStyle{
-    background-color: rgb(233, 233, 233);
-    width: 500px;
-    height: 500px;
-    position: absolute;
-    left: 50%;
-    top: 20%; 
-    margin-left: -150px;
-    margin-top: -150px;
-    
+.modalStyle {
+  background-color: #e1ebfc;
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  margin-left: -150px;
+  margin-top: -150px;
+  border: darkgoldenrod 1px solid;
+  padding: 25px;
 }
 
-.checkout_btn{
-    float: right !important;
+.checkout_btn {
+  float: right !important;
+}
+
+.modalStyle h2, h4{
+    text-align: center;
 }
