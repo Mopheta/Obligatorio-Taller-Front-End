@@ -52,10 +52,10 @@ const calcularMontos = (items) => {
     let totalItems = 0;
 
     items.forEach(item => {
-        totalAmount += item.product.price;
-        iva += (item.product.price - (item.product.price / 1.22));
+        totalAmount += (item.product.price * item.product.quantity);
+        iva += ((item.product.price - (item.product.price / 1.22)) * item.product.quantity);
         subTotal += (totalAmount - iva);
-        totalItems++; 
+        totalItems += item.product.quantity; 
     })
 
     let montos = {
