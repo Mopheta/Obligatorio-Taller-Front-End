@@ -28,7 +28,7 @@ export default class Product extends Component {
         const { product } = this.props
         const { quantity } = this.state;
         return (
-
+            
             <div className="card col-lg-3 col-md-4 col-6">
                 <div className="cardImgContainer">
                     <img className="card-img-top" src={product.photo} alt="Product representation" />
@@ -38,7 +38,7 @@ export default class Product extends Component {
                     <p className="card-text descriptionProduct">{product.description}</p>
                     <p className="card-text"> ${product.price}</p>
                     <input type="number" className="quantityInput" title="Quantity" value={quantity} onChange={this.handleChangeQuantity} />
-                    <button href="google.com" className="btn btn-info float-right" onClick={this.addItemToCart}>Add to cart</button>
+                    <button className="btn btn-info float-right" onClick={this.addItemToCart}>Add to cart</button>
                 </div>
             </div>
         )
