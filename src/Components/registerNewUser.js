@@ -66,7 +66,7 @@ class RegisterNewUser extends Component {
                                             <h1 className="text-center text-info signUpRegisterTitle">Be part of our store</h1>
                                             <div className="form-group">
                                                 <label htmlFor="email" className="text-info">Username*:</label><br />
-                                                <input type="text" 
+                                                <input type="email" 
                                                     name="email" 
                                                     id="email" 
                                                     className="form-control w-100" 
